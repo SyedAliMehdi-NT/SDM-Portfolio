@@ -7,3 +7,5 @@ a:hover{
     color: #eee !important;
     text-decoration: none !important;
 }
+.hidden { display: none !important; }
+.visible { display: block !important; }
