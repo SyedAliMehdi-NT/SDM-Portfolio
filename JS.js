@@ -1,4 +1,5 @@
 
+
 fetch('https://owlapplicationbuilder.com/api/entities/simpler_digital_marketing_1580295343903_96/portfolio_category/get_all_en')
   .then(response => response.json())
   .then(data => {
@@ -32,7 +33,7 @@ fetch('https://owlapplicationbuilder.com/api/entities/simpler_digital_marketing_
     if (Array.isArray(detailData)) {
         detailData.forEach(category => {
           console.log(category);
-          const detailCategory = category.categoryRelation;
+          const detailCategory = category.categoryRelationey;
           console.log(detailCategory);
         });
       } else {
