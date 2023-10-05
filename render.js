@@ -9,7 +9,10 @@ fetch('https://owlapplicationbuilder.com/api/entities/simpler_digital_marketing_
         const brandingCategory = document.getElementById('branding-category');
 
 
+
+        
         function renderCategory(categoryToFilter, data) {
+
             document.querySelector('.col-html').innerHTML = '';
 
             if (Array.isArray(data.data)) {
@@ -76,10 +79,25 @@ fetch('https://owlapplicationbuilder.com/api/entities/simpler_digital_marketing_
                 console.log('The data is not an array');
             }
         }
+        // allCategory.addEventListener('click', function () {
+        //     renderCategory("All", data);
+        // });
 
-        allCategory.addEventListener('click', function () {
+        function setActiveCategory(button) {
+            // Reset background color for all buttons
+            [allCategory, marketingCategory, designCategory, brandingCategory].forEach(btn => {
+                btn.classList.remove('active-category');
+            });
+            // Set the clicked button's background color
+            button.classList.add('active-category');
+        }
+
+
+        allCategory.addEventListener('click', function() {
             renderCategory("All", data);
+            setActiveCategory(this);
         });
+
         function toSearch(element) {
             switch (element.id) {
                 case 'Marketing-category':
@@ -93,25 +111,58 @@ fetch('https://owlapplicationbuilder.com/api/entities/simpler_digital_marketing_
             }
         }
 
-        marketingCategory.addEventListener('click', function (e) {
+
+        marketingCategory.addEventListener('click', function(e) {
             e.preventDefault();
             const searchCategory = toSearch(this);
-            console.log("Clicked category:", searchCategory);  /* For debugging*/
             renderCategory(searchCategory, data);
+            setActiveCategory(this);
         });
 
-        designCategory.addEventListener('click', function (e) {
+        designCategory.addEventListener('click', function(e) {
             e.preventDefault();
             const searchCategory = toSearch(this);
-            console.log("Clicked category:", searchCategory);  /* For debugging */
             renderCategory(searchCategory, data);
+            setActiveCategory(this);
         });
 
-        brandingCategory.addEventListener('click', function (e) {
-            const searchCategory = toSearch(this);
+        brandingCategory.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log("Clicked category:", searchCategory);  /* For debugging*/
+            const searchCategory = toSearch(this);
             renderCategory(searchCategory, data);
+            setActiveCategory(this);
         });
+
+        // Trigger the "All" category data to be shown by default after fetching the data
+        allCategory.click();
+
     })
     .catch(error => console.log('Error:', error));
+
+        
+
+    //     marketingCategory.addEventListener('click', function (e) {
+    //         e.preventDefault();
+    //         const searchCategory = toSearch(this);
+    //         console.log("Clicked category:", searchCategory);  /* For debugging*/
+    //         renderCategory(searchCategory, data);
+    //     });
+
+    //     designCategory.addEventListener('click', function (e) {
+    //         e.preventDefault();
+    //         const searchCategory = toSearch(this);
+    //         console.log("Clicked category:", searchCategory);  /* For debugging */
+    //         renderCategory(searchCategory, data);
+    //     });
+
+    //     brandingCategory.addEventListener('click', function (e) {
+    //         const searchCategory = toSearch(this);
+    //         e.preventDefault();
+    //         console.log("Clicked category:", searchCategory);  /* For debugging*/
+    //         renderCategory(searchCategory, data);
+    //     });
+
+
+
+    // })
+    // .catch(error => console.log('Error:', error));

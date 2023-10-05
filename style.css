@@ -7,5 +7,14 @@ a:hover{
     color: #eee !important;
     text-decoration: none !important;
 }
-.hidden { display: none !important; }
-.visible { display: block !important; }
+.hidden {
+     display: none !important; 
+}
+.visible {
+     display: block !important; 
+}
+.active-category {
+    background-color: #0056b3!important;
+    color: #eee !important;
+
+}
