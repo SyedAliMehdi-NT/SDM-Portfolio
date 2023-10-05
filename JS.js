@@ -13,7 +13,7 @@ fetch('https://owlapplicationbuilder.com/api/entities/simpler_digital_marketing_
   allCategory.addEventListener('click', function() {
       console.log("All Work is clicked!")
 
-      allCategory.style.display='block';
+      // allCategory.style.display='block';
       const detailData = data.data;
     // console.log(detailData);
 
