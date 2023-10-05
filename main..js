@@ -1,34 +1,32 @@
 fetch('https://owlapplicationbuilder.com/api/entities/simpler_digital_marketing_1580295343903_96/portfolio/get_all_en')
-.then(response => response.json())
-.then(data => {
+    .then(response => response.json())
+    .then(data => {
 
 
-  const allCategory = document.getElementById('All-category');
-  const marketingCategory = document.getElementById('Marketing-category');
-  const designCategory = document.getElementById('webdesign-category');
-  const brandingCategory = document.getElementById('branding-category');
-
-
-
-function renderCategory(detailData, categoryToSearch) {
-    // Clear the current content first
-    document.querySelector('.col-html').innerHTML = '';
-    const detailData = data.data;
-
-
-    detailData.forEach(category => {
-        // If there's a category to search for and it doesn't match the current item's category, skip this iteration
-        if (categoryToSearch && category.categoryRelation !== categoryToSearch) return;
-
-
-        const categoryData = category.categoryRelation;
-        const titleData = category.title;
-        const descriptionData = category.portfolioDescription;
-        const titleImage = category.portfolioImage;
-        const detailBtn = category.slug;            
-        const cardWise = `
+        const allCategory = document.getElementById('All-category');
+        const marketingCategory = document.getElementById('Marketing-category');
+        const designCategory = document.getElementById('webdesign-category');
+        const brandingCategory = document.getElementById('branding-category');
         
         
+
+        function renderCategory(detailData, categoryToSearch) {
+            // Clear the current content first
+            const detailData = data.data;
+
+
+            detailData.forEach(category => {
+                // If there's a category to search for and it doesn't match the current item's category, skip this iteration
+                if (categoryToSearch && category.categoryRelation !== categoryToSearch) return;
+
+
+                const categoryData = category.categoryRelation;
+                const titleData = category.title;
+                const descriptionData = category.portfolioDescription;
+                const titleImage = category.portfolioImage;
+                const detailBtn = category.slug;
+                const cardWise = `
+
         <div class="col-lg-4 col-md-6 col-html" style="font-size: 1.75rem; text-align: center;"
             data-comp-title="Grid Column">
             <div class="dropzone" role="group" aria-label="1 / 5">
@@ -73,46 +71,46 @@ function renderCategory(detailData, categoryToSearch) {
         </div>
     </div>`;
 
-    document.querySelector('.col-html').innerHTML += cardWise;
+                document.querySelector('.col-html').innerHTML += cardWise;
 
 
 
-        
-        console.log(titleImage);
-        console.log(titleData);
-        console.log(descriptionData);
-        console.log(categoryData);
-        console.log(detailBtn);
 
-           });
+                console.log(titleImage);
+                console.log(titleData);
+                console.log(descriptionData);
+                console.log(categoryData);
+                console.log(detailBtn);
+
+            });
 
 
 
             // For All Category
-        allCategory.addEventListener('click', function () {
-            console.log("All Work is clicked!");
-            renderCategory(data.data);  // No category filter, so it will show all
-        });
+            allCategory.addEventListener('click', function () {
+                console.log("All Work is clicked!");
+                renderCategory(data.data);  // No category filter, so it will show all
+            });
 
-        // For Marketing Category
-        marketingCategory.addEventListener('click', function () {
-            console.log("Marketing category is clicked!");
-            renderCategory(data.data, 'Marketing');  // Filter by 'Marketing'
-        });
+            // For Marketing Category
+            marketingCategory.addEventListener('click', function () {
+                console.log("Marketing category is clicked!");
+                renderCategory(data.data, 'Marketing');  // Filter by 'Marketing'
+            });
 
-        // For Design Category
-        designCategory.addEventListener('click', function () {
-            console.log("Design category is clicked!");
-            renderCategory(data.data, 'Design');  // Filter by 'Design'
-        });
+            // For Design Category
+            designCategory.addEventListener('click', function () {
+                console.log("Design category is clicked!");
+                renderCategory(data.data, 'Web Design');  // Filter by 'Design'
+            });
 
-        // For Branding Category
-        brandingCategory.addEventListener('click', function () {
-            console.log("Branding category is clicked!");
-            renderCategory(data.data, 'Branding');  // Filter by 'Branding'
-        });
+            // For Branding Category
+            brandingCategory.addEventListener('click', function () {
+                console.log("Branding category is clicked!");
+                renderCategory(data.data, 'Branding');  // Filter by 'Branding'
+            });
 
-}
-})
-.catch(error => console.log('Error:', error));
+        }
+    })
+    .catch(error => console.log('Error:', error));
 
